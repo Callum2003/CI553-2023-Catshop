@@ -15,6 +15,7 @@ public class BetterBasket extends Basket implements Serializable
   
   @Override
   public boolean add(Product pr) {
+	  // Check if Product is repeated.
 	  for(Product existingProduct: this) {
 		  if(existingProduct.getProductNum().equals(pr.getProductNum())) {
 			  System.out.println("Product is repeated");
@@ -22,10 +23,12 @@ public class BetterBasket extends Basket implements Serializable
 			  return true;
 		  }
 	  }
+	  // Product not repeated.
 	  System.out.println("Product is not repeated");
 	  super.add(pr);
 	  return true;
   }
+  // Sort ordered items into ascending order.
   public void sortBasket() {
 	  Collections.sort(this, (p1, p2) -> p1.getProductNum().compareTo(p2.getProductNum()));
   }
